@@ -64,7 +64,7 @@ class MenuLinkContentNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($entity, $format = NULL, array $context = array()) {
+  public function normalize($entity, $format = NULL, array $context = array()) : float|array|int|bool|\ArrayObject|string|null {
     $normalized = parent::normalize($entity, $format, $context);
     if (isset($normalized['link']) && is_array($normalized['link'])) {
       foreach ($normalized['link'] as $key => $link) {
@@ -111,7 +111,7 @@ class MenuLinkContentNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function denormalize($data, $class, $format = NULL, array $context = array()) {
+  public function denormalize($data, $class, $format = NULL, array $context = array()): mixed {
     if (isset($data['link']) && is_array($data['link'])) {
       foreach ($data['link'] as $key => $link) {
         try {

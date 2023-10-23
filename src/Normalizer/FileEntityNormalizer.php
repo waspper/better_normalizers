@@ -38,7 +38,7 @@ class FileEntityNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($entity, $format = NULL, array $context = array()) {
+  public function normalize($entity, $format = NULL, array $context = array()) : float|array|int|bool|\ArrayObject|string|null  {
     $data = parent::normalize($entity, $format, $context);
     if (!isset($context['included_fields']) || in_array('data', $context['included_fields'])) {
       // Save base64-encoded file contents to the "data" property.
@@ -53,7 +53,7 @@ class FileEntityNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function denormalize($data, $class, $format = NULL, array $context = array()) {
+  public function denormalize($data, $class, $format = NULL, array $context = array()): mixed  {
     // Avoid 'data' being treated as a field.
     $file_data = $data['data'][0]['value'];
     unset($data['data']);
